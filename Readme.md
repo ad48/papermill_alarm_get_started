@@ -1,8 +1,10 @@
 # How to use the Papermill Alarm
 
-1. You can simply subscribe to the 'Single documents' route of the API. This will allow you to manually submit docs one at a time. This is easy to do, but adds up to a lot of work over time. 
+There are 2 ways to use the Papermill Alarm API. 
 
-2. You can adapt the code in the attached notebook to create an automated daily search of your new submissions. 
+1. You can simply subscribe to the 'POST Single Documents' route of the API. This will allow you to manually submit docs one at a time. This is easy to do, but adds up to a lot of work over time. 
+
+2. You can adapt the code in the attached notebook to create an automated daily search of your new submissions using the 'POST Batches' route. This is much faster.
 
 Before you begin, you need to
 

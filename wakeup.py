@@ -10,6 +10,7 @@ def wakeup(headers, invocations=10):
     url = 'https://papermill-alarm.p.rapidapi.com'
     dummy_docs = {'payload':[{'id':'fake id','title':'fake title','abstract':'fake abstract'} for i in range(invocations)]}
     status = 429
+    i=0
     while status!=200:
         # make a POST request to the API
         r = requests.post(url, 
@@ -27,6 +28,11 @@ def wakeup(headers, invocations=10):
                 print('Status != 200')
         print(f"Response status code: {r.status_code}")
         print(f"PMA response: {r.json().get('status_code')}")
+        i+=1
+        if i>invocations:
+            ## this prevents the wakeup procedure falling into an infinite loop.
+            ## this should only happen if there is a server-side error, though.
+            break
         if status!=200:
             print('Papermill Alarm needs time to wake up. Waiting for 60s.')
             time.sleep(60)
